@@ -12,7 +12,7 @@ ANSWER_KEY_SCORE = {0: 1, 1: 4, 2: 0, 3: 3, 4: 1}
 ANSWER_KEY = {0: "A", 1: "B", 2: "C", 3: "D", 4: "E"}
 
 # 加载一个图片到opencv中
-img = cv.imread('E:\\tmp\\t1.png')
+img = cv.imread('imgs\\example01\\t1.png')
 
 cv.imshow("orgin",img)
 
@@ -31,7 +31,7 @@ edged=cv.Canny(gaussian_bulr,75,200) # 边缘检测,灰度值小于2参这个值
 cv.imshow("edged",edged)
 
 # 寻找轮廓
-image, cts, hierarchy = cv.findContours( edged.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+cts, hierarchy = cv.findContours( edged.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
 # 给轮廓加标记，便于我们在原图里面观察，注意必须是原图才能画出红色，灰度图是没有颜色的
 # cv.drawContours(img, cts, -1, (0,0,255), 3)
@@ -66,7 +66,7 @@ for c in list:
         cv.imshow("ostu", thresh2)
 
         # 继续寻找轮廓
-        r_image, r_cnt, r_hierarchy = cv.findContours(thresh2.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+        r_cnt, r_hierarchy = cv.findContours(thresh2.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
         print("找到轮廓个数：",len(r_cnt))
 
